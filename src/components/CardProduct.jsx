@@ -5,30 +5,29 @@ import { useState } from "react";
 export const CardProduct = (props) => {
   const { imageUrl, productName, price, stock } = props;
 
-  const [message, setMessage] = useState("Add to card");
-
-  let quantity = 10;
+  const [message, setMessage] = useState();
+  const [quantity, setQuantity] = useState(0);
 
   const addToCart = () => {
-    setMessage("Added");
+    alert("added");
   };
 
   const incrementQuantity = () => {
-    quantity += 1;
-    console.log(quantity);
-    alert("Ditambahkan");
+    if (quantity < stock) {
+      setQuantity(quantity + 1);
+    }
   };
 
   const decrementQuantity = () => {
-    quantity -= 2;
-    console.log(quantity);
-    alert("Dikurangi");
+    if (quantity > 0) {
+      setQuantity(quantity - 1);
+    }
   };
 
   return (
-    <div className="p-4 border rounded-md md:max-w-96 flex flex-col gap-4">
+    <div className="p-4 border rounded-2xl md:max-w-96 flex flex-col gap-4">
       <div className="aspect-square w-full overflow-hidden">
-        <img className="w-full rounded-lg" src={imageUrl} />
+        <img className="w-full rounded-xl" src={imageUrl} />
       </div>
       <div>
         <p className="text-md">{productName}</p>
@@ -41,6 +40,7 @@ export const CardProduct = (props) => {
         {/* Button quantity */}
         <div className="flex justify-between items-center">
           <Button
+            disabled={quantity <= 0}
             onClick={() => {
               decrementQuantity();
             }}
@@ -51,6 +51,7 @@ export const CardProduct = (props) => {
           </Button>
           <p className="text-lg font-bold">{quantity}</p>
           <Button
+            disabled={quantity >= stock}
             onClick={() => {
               incrementQuantity();
             }}
@@ -62,8 +63,12 @@ export const CardProduct = (props) => {
         </div>
 
         {/* Button add to cart */}
-        <Button onClick={() => addToCart()} className={"w-full mt-2"}>
-          {message}
+        <Button
+          disabled={stock <= 0}
+          onClick={() => addToCart()}
+          className={"w-full mt-2"}
+        >
+          {stock > 0 ? "Add to cart" : "Out of stock"}
         </Button>
       </div>
     </div>

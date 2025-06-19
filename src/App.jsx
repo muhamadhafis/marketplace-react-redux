@@ -9,14 +9,14 @@ const productsRaw = [
   {
     productName: "Kaos FINALDANCE Coklat Spesial",
     price: 100000,
-    stock: 20,
+    stock: 3,
     imageUrl:
       "https://erigostore.co.id/cdn/shop/files/New-Gita-Front-1.jpg?v=1749524871&width=1100",
   },
   {
     productName: "Kaos FINALDANCE Biru Spesial",
     price: 120000,
-    stock: 10,
+    stock: 0,
     imageUrl:
       "https://erigostore.co.id/cdn/shop/files/New-Oniel-Front.jpg?v=1749525060&width=1100",
   },
