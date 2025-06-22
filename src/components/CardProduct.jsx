@@ -5,7 +5,6 @@ import { useState } from "react";
 export const CardProduct = (props) => {
   const { imageUrl, productName, price, stock } = props;
 
-  const [message, setMessage] = useState();
   const [quantity, setQuantity] = useState(0);
 
   const addToCart = () => {

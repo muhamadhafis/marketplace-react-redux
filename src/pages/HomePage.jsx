@@ -2,9 +2,10 @@ import { Button } from "@/components/ui/button";
 import "../App.css";
 import { CardProduct } from "../components/CardProduct";
 import { axiosInstance } from "@/lib/axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function HomePage() {
+  const [productIsLoading, setProductIsLoading] = useState(false);
   const [products, setProducts] = useState([]);
 
   const productsList = products.map((product) => {
@@ -19,6 +20,7 @@ function HomePage() {
   });
 
   const fetchProducts = async () => {
+    setProductIsLoading(true);
     try {
       const response = await axiosInstance.get("/products");
 
@@ -26,8 +28,15 @@ function HomePage() {
       setProducts(response.data);
     } catch (err) {
       console.log(err);
+    } finally {
+      setProductIsLoading(false);
     }
   };
+
+  // fetch product data once, when home page is first mount
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   return (
     <>
@@ -41,10 +50,11 @@ function HomePage() {
             for you to buy.
           </p>
         </div>
-
-        <Button onClick={fetchProducts}>Fetch Products</Button>
-
-        <div className="mt-12 grid grid-cols-2 gap-4">{productsList}</div>
+        {productIsLoading ? (
+          <p>Loading...</p>
+        ) : (
+          <div className="mt-12 grid grid-cols-2 gap-4">{productsList}</div>
+        )}
       </main>
     </>
   );
