@@ -1,7 +1,7 @@
+import { Button } from "@/components/ui/button";
 import "../App.css";
-import { Header } from "../components/Header";
-import { Footer } from "../components/Footer";
 import { CardProduct } from "../components/CardProduct";
+import { axiosInstance } from "@/lib/axios";
 
 const productsRaw = [
   {
@@ -31,6 +31,17 @@ function HomePage() {
       />
     );
   });
+
+  const fetchProducts = async () => {
+    try {
+      const response = await axiosInstance.get("/products");
+
+      console.log(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <>
       <main className="min-h-[80vh] max-w-screen-md mx-auto px-4">
@@ -43,6 +54,8 @@ function HomePage() {
             for you to buy.
           </p>
         </div>
+
+        <Button onClick={fetchProducts}>Fetch Products</Button>
 
         <div className="mt-12 grid grid-cols-2 gap-4">{products}</div>
       </main>
