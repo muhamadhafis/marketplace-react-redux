@@ -1,4 +1,4 @@
 import axios from "axios";
 export const axiosInstance = axios.create({
-  baseURL: "https://localhost:2000",
+  baseURL: "http://localhost:2000",
 });

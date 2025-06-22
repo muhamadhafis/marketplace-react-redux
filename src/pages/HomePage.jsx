@@ -2,26 +2,12 @@ import { Button } from "@/components/ui/button";
 import "../App.css";
 import { CardProduct } from "../components/CardProduct";
 import { axiosInstance } from "@/lib/axios";
-
-const productsRaw = [
-  {
-    productName: "Kaos FINALDANCE Coklat Spesial",
-    price: 100000,
-    stock: 3,
-    imageUrl:
-      "https://erigostore.co.id/cdn/shop/files/New-Gita-Front-1.jpg?v=1749524871&width=1100",
-  },
-  {
-    productName: "Kaos FINALDANCE Biru Spesial",
-    price: 120000,
-    stock: 0,
-    imageUrl:
-      "https://erigostore.co.id/cdn/shop/files/New-Oniel-Front.jpg?v=1749525060&width=1100",
-  },
-];
+import { useState } from "react";
 
 function HomePage() {
-  const products = productsRaw.map((product) => {
+  const [products, setProducts] = useState([]);
+
+  const productsList = products.map((product) => {
     return (
       <CardProduct
         productName={product.productName}
@@ -37,6 +23,7 @@ function HomePage() {
       const response = await axiosInstance.get("/products");
 
       console.log(response.data);
+      setProducts(response.data);
     } catch (err) {
       console.log(err);
     }
@@ -57,7 +44,7 @@ function HomePage() {
 
         <Button onClick={fetchProducts}>Fetch Products</Button>
 
-        <div className="mt-12 grid grid-cols-2 gap-4">{products}</div>
+        <div className="mt-12 grid grid-cols-2 gap-4">{productsList}</div>
       </main>
     </>
   );
