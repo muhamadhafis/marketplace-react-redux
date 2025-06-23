@@ -3,6 +3,7 @@ import "../App.css";
 import { CardProduct } from "../components/CardProduct";
 import { axiosInstance } from "@/lib/axios";
 import { useEffect, useState } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 function HomePage() {
   const [productIsLoading, setProductIsLoading] = useState(false);
@@ -50,7 +51,16 @@ function HomePage() {
           </p>
         </div>
         {productIsLoading ? (
-          <p>Loading...</p>
+          <div className="p-4 border rounded-2xl md:max-w-96 flex flex-col gap-4 mt-12">
+            <div className="aspect-square w-full overflow-hidden">
+              <Skeleton className="aspect-square w-full overflow-hidden" />
+            </div>
+            <div>
+              <Skeleton className="h-6 w-50" />
+              <Skeleton className="h-8 w-30 mt-2" />
+              <Skeleton className="h-4 w-20 mt-2" />
+            </div>
+          </div>
         ) : (
           <div className="mt-12 grid grid-cols-2 gap-4">{productsList}</div>
         )}
