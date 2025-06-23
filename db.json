@@ -1,18 +1,179 @@
 {
   "products": [
     {
+      "id": 1,
       "productName": "Kaos FINALDANCE Coklat Spesial",
       "price": 100000,
       "stock": 3,
-      "imageUrl": "https://erigostore.co.id/cdn/shop/files/New-Gita-Front-1.jpg?v=1749524871&width=1100",
-      "id": 1
+      "imageUrl": "https://erigostore.co.id/cdn/shop/files/New-Gita-Front-1.jpg?v=1749524871&width=1100"
     },
     {
+      "id": 2,
       "productName": "Kaos FINALDANCE Biru Spesial",
       "price": 120000,
       "stock": 0,
-      "imageUrl": "https://erigostore.co.id/cdn/shop/files/New-Oniel-Front.jpg?v=1749525060&width=1100",
-      "id": 2
+      "imageUrl": "https://erigostore.co.id/cdn/shop/files/New-Oniel-Front.jpg?v=1749525060&width=1100"
+    },
+    {
+      "id": 3,
+      "productName": "Kaos FINALDANCE Hitam Basic",
+      "price": 95000,
+      "stock": 5,
+      "imageUrl": "https://erigostore.co.id/cdn/shop/files/New-Gita-Front-1.jpg?v=1749524871&width=1100"
+    },
+    {
+      "id": 4,
+      "productName": "Kaos FINALDANCE Putih Casual",
+      "price": 98000,
+      "stock": 7,
+      "imageUrl": "https://erigostore.co.id/cdn/shop/files/New-Oniel-Front.jpg?v=1749525060&width=1100"
+    },
+    {
+      "id": 5,
+      "productName": "Kaos FINALDANCE Hijau Olive",
+      "price": 105000,
+      "stock": 2,
+      "imageUrl": "https://erigostore.co.id/cdn/shop/files/New-Gita-Front-1.jpg?v=1749524871&width=1100"
+    },
+    {
+      "id": 6,
+      "productName": "Kaos FINALDANCE Abu Misty",
+      "price": 110000,
+      "stock": 4,
+      "imageUrl": "https://erigostore.co.id/cdn/shop/files/New-Oniel-Front.jpg?v=1749525060&width=1100"
+    },
+    {
+      "id": 7,
+      "productName": "Kaos FINALDANCE Maroon Classic",
+      "price": 102000,
+      "stock": 6,
+      "imageUrl": "https://erigostore.co.id/cdn/shop/files/New-Gita-Front-1.jpg?v=1749524871&width=1100"
+    },
+    {
+      "id": 8,
+      "productName": "Kaos FINALDANCE Navy Street",
+      "price": 99000,
+      "stock": 0,
+      "imageUrl": "https://erigostore.co.id/cdn/shop/files/New-Oniel-Front.jpg?v=1749525060&width=1100"
+    },
+    {
+      "id": 9,
+      "productName": "Kaos FINALDANCE Kuning Cerah",
+      "price": 97000,
+      "stock": 8,
+      "imageUrl": "https://erigostore.co.id/cdn/shop/files/New-Gita-Front-1.jpg?v=1749524871&width=1100"
+    },
+    {
+      "id": 10,
+      "productName": "Kaos FINALDANCE Ungu Muda",
+      "price": 99000,
+      "stock": 1,
+      "imageUrl": "https://erigostore.co.id/cdn/shop/files/New-Oniel-Front.jpg?v=1749525060&width=1100"
+    },
+    {
+      "id": 11,
+      "productName": "Kaos FINALDANCE Krem Soft",
+      "price": 103000,
+      "stock": 0,
+      "imageUrl": "https://erigostore.co.id/cdn/shop/files/New-Gita-Front-1.jpg?v=1749524871&width=1100"
+    },
+    {
+      "id": 12,
+      "productName": "Kaos FINALDANCE Tosca Breeze",
+      "price": 97000,
+      "stock": 3,
+      "imageUrl": "https://erigostore.co.id/cdn/shop/files/New-Oniel-Front.jpg?v=1749525060&width=1100"
+    },
+    {
+      "id": 13,
+      "productName": "Kaos FINALDANCE Pink Pastel",
+      "price": 95000,
+      "stock": 4,
+      "imageUrl": "https://erigostore.co.id/cdn/shop/files/New-Gita-Front-1.jpg?v=1749524871&width=1100"
+    },
+    {
+      "id": 14,
+      "productName": "Kaos FINALDANCE Coklat Tua",
+      "price": 98000,
+      "stock": 6,
+      "imageUrl": "https://erigostore.co.id/cdn/shop/files/New-Oniel-Front.jpg?v=1749525060&width=1100"
+    },
+    {
+      "id": 15,
+      "productName": "Kaos FINALDANCE Denim Street",
+      "price": 109000,
+      "stock": 2,
+      "imageUrl": "https://erigostore.co.id/cdn/shop/files/New-Gita-Front-1.jpg?v=1749524871&width=1100"
+    },
+    {
+      "id": 16,
+      "productName": "Kaos FINALDANCE Grey Urban",
+      "price": 100000,
+      "stock": 5,
+      "imageUrl": "https://erigostore.co.id/cdn/shop/files/New-Oniel-Front.jpg?v=1749525060&width=1100"
+    },
+    {
+      "id": 17,
+      "productName": "Kaos FINALDANCE Merah Ceria",
+      "price": 97000,
+      "stock": 7,
+      "imageUrl": "https://erigostore.co.id/cdn/shop/files/New-Gita-Front-1.jpg?v=1749524871&width=1100"
+    },
+    {
+      "id": 18,
+      "productName": "Kaos FINALDANCE Army Combat",
+      "price": 106000,
+      "stock": 1,
+      "imageUrl": "https://erigostore.co.id/cdn/shop/files/New-Oniel-Front.jpg?v=1749525060&width=1100"
+    },
+    {
+      "id": 19,
+      "productName": "Kaos FINALDANCE Silver Shine",
+      "price": 101000,
+      "stock": 3,
+      "imageUrl": "https://erigostore.co.id/cdn/shop/files/New-Gita-Front-1.jpg?v=1749524871&width=1100"
+    },
+    {
+      "id": 20,
+      "productName": "Kaos FINALDANCE Gold Limited",
+      "price": 125000,
+      "stock": 0,
+      "imageUrl": "https://erigostore.co.id/cdn/shop/files/New-Oniel-Front.jpg?v=1749525060&width=1100"
+    },
+    {
+      "id": 21,
+      "productName": "Kaos FINALDANCE Orange Joy",
+      "price": 94000,
+      "stock": 2,
+      "imageUrl": "https://erigostore.co.id/cdn/shop/files/New-Gita-Front-1.jpg?v=1749524871&width=1100"
+    },
+    {
+      "id": 22,
+      "productName": "Kaos FINALDANCE Beige Cool",
+      "price": 102000,
+      "stock": 4,
+      "imageUrl": "https://erigostore.co.id/cdn/shop/files/New-Oniel-Front.jpg?v=1749525060&width=1100"
+    },
+    {
+      "id": 23,
+      "productName": "Kaos FINALDANCE Cyan Neon",
+      "price": 113000,
+      "stock": 6,
+      "imageUrl": "https://erigostore.co.id/cdn/shop/files/New-Gita-Front-1.jpg?v=1749524871&width=1100"
+    },
+    {
+      "id": 24,
+      "productName": "Kaos FINALDANCE Charcoal",
+      "price": 99000,
+      "stock": 0,
+      "imageUrl": "https://erigostore.co.id/cdn/shop/files/New-Oniel-Front.jpg?v=1749525060&width=1100"
+    },
+    {
+      "id": 25,
+      "productName": "Kaos FINALDANCE Lime Pop",
+      "price": 95000,
+      "stock": 3,
+      "imageUrl": "https://erigostore.co.id/cdn/shop/files/New-Gita-Front-1.jpg?v=1749524871&width=1100"
     }
   ]
 }

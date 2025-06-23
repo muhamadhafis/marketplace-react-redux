@@ -1,9 +1,11 @@
 import { Button } from "./ui/button";
 import { IoIosAdd, IoIosRemove } from "react-icons/io";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { IdCardIcon } from "lucide-react";
 
 export const CardProduct = (props) => {
-  const { imageUrl, productName, price, stock } = props;
+  const { imageUrl, productName, price, stock, id } = props;
 
   const [quantity, setQuantity] = useState(0);
 
@@ -25,16 +27,19 @@ export const CardProduct = (props) => {
 
   return (
     <div className="p-4 border rounded-2xl md:max-w-96 flex flex-col gap-4">
-      <div className="aspect-square w-full overflow-hidden">
+      <Link
+        to={"/product/" + id}
+        className="aspect-square w-full overflow-hidden"
+      >
         <img className="w-full rounded-xl" src={imageUrl} />
-      </div>
-      <div>
+      </Link>
+      <Link to={"/product/" + id}>
         <p className="text-md">{productName}</p>
         <p className="text-xl font-semibold">
           Rp {price.toLocaleString("id-ID")}
         </p>
         <p className="text-sm text-muted-foreground">In Stock : {stock}</p>
-      </div>
+      </Link>
       <div>
         {/* Button quantity */}
         <div className="flex justify-between items-center">

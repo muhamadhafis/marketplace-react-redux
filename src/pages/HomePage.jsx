@@ -11,6 +11,7 @@ function HomePage() {
   const productsList = products.map((product) => {
     return (
       <CardProduct
+        id={product.id}
         productName={product.productName}
         price={product.price}
         stock={product.stock}
@@ -23,8 +24,6 @@ function HomePage() {
     setProductIsLoading(true);
     try {
       const response = await axiosInstance.get("/products");
-
-      console.log(response.data);
       setProducts(response.data);
     } catch (err) {
       console.log(err);
