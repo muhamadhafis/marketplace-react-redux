@@ -50,7 +50,7 @@ const ProductDetailPage = () => {
         {productIsLoading ? (
           <Skeleton className="h-full w-full" />
         ) : (
-          <img src={product.imageUrl} alt="" className="w-full rounded-2xl" />
+          <img src={product.imageUrl} alt="" className="w-full rounded-4xl" />
         )}
         <div className="flex flex-col gap-1 justify-center">
           {productIsLoading ? (

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 export const Header = () => {
   return (
-    <header className="min-h-16 border-b flex items-center justify-between px-6 mb-12">
+    <header className="min-h-16 border-b flex items-center justify-between px-6">
       {/* BRAND */}
       <Link to={"/"}>
         <p className="text-2xl font-bold hover:cursor-pointer font-mono tracking-tighter">
