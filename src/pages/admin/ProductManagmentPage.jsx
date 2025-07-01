@@ -1,5 +1,7 @@
 import { AdminLayout } from "@/components/Layout/AdminLayout";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Pagination,
   PaginationContent,
@@ -24,6 +26,7 @@ const ProductManagmentPage = () => {
 
   const [products, setProducts] = useState([]);
   const [hasNextPage, setHasNextPage] = useState(true);
+  const [productName, setProductName] = useState("");
 
   const handleNextPage = () => {
     searchParams.set("page", Number(searchParams.get("page")) + 1);
@@ -41,6 +44,7 @@ const ProductManagmentPage = () => {
         params: {
           _per_page: 5,
           _page: Number(searchParams.get("page")),
+          productName: searchParams.get("search"),
         },
       });
       console.log(response.data);
@@ -51,11 +55,21 @@ const ProductManagmentPage = () => {
     }
   };
 
+  const searchProduct = () => {
+    if (productName) {
+      searchParams.set("search", productName);
+      setSearchParams(searchParams);
+    } else {
+      searchParams.delete("search");
+      setSearchParams(searchParams);
+    }
+  };
+
   useEffect(() => {
     if (searchParams.get("page")) {
       fetchProducts();
     }
-  }, [searchParams.get("page")]);
+  }, [searchParams.get("page"), searchParams.get("search")]);
 
   useEffect(() => {
     if (!searchParams.get("page")) {
@@ -76,6 +90,18 @@ const ProductManagmentPage = () => {
           </Button>
         }
       >
+        <div className="mb-4">
+          <Label className={"mb-2"}>Search Product Name</Label>
+          <div className="flex gap-2">
+            <Input
+              value={productName}
+              onChange={(e) => setProductName(e.target.value)}
+              className={"max-w-96"}
+              placeholder={"Search product..."}
+            />
+            <Button onClick={searchProduct}>Search</Button>
+          </div>
+        </div>
         <Table className={"p-4 border rounded-md"}>
           <TableHeader>
             <TableRow>

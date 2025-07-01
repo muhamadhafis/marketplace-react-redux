@@ -26,7 +26,7 @@ export const CardProduct = (props) => {
   };
 
   return (
-    <div className="p-4 border rounded-2xl md:max-w-96 flex flex-col gap-4 mt-12">
+    <div className="p-4 border rounded-2xl md:max-w-96 flex flex-col gap-4">
       <Link
         to={"/product/" + id}
         className="aspect-square w-full overflow-hidden"
