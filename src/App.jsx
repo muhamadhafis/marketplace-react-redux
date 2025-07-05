@@ -7,6 +7,8 @@ import NotFoundPage from "./pages/NotFoundPage";
 import LoginPage from "./pages/LoginPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import ProductManagmentPage from "./pages/admin/ProductManagmentPage";
+import CreateProductPage from "./pages/admin/CreateProductPage";
+import EditProductPage from "./pages/admin/EditProductPage";
 
 function App() {
   const location = useLocation();
@@ -19,7 +21,13 @@ function App() {
         <Route path="/cart" Component={CardPage} />
         <Route path="/login" Component={LoginPage} />
         <Route path="/product/:productId" Component={ProductDetailPage} />
-        <Route path="/admin/products" Component={ProductManagmentPage} />
+
+        <Route path="/admin">
+          <Route path="products" Component={ProductManagmentPage} />
+          <Route path="products/create" Component={CreateProductPage} />
+          <Route path="products/edit/:productId" Component={EditProductPage} />
+        </Route>
+
         <Route path="*" Component={NotFoundPage} />
       </Routes>
       {!location.pathname.startsWith("/admin") ? <Footer /> : null}

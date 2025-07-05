@@ -2,7 +2,6 @@ import { Button } from "./ui/button";
 import { IoIosAdd, IoIosRemove } from "react-icons/io";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { IdCardIcon } from "lucide-react";
 
 export const CardProduct = (props) => {
   const { imageUrl, productName, price, stock, id } = props;
