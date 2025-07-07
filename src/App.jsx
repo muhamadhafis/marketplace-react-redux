@@ -9,6 +9,7 @@ import ProductDetailPage from "./pages/ProductDetailPage";
 import ProductManagmentPage from "./pages/admin/ProductManagmentPage";
 import CreateProductPage from "./pages/admin/CreateProductPage";
 import EditProductPage from "./pages/admin/EditProductPage";
+import CounterPage from "./pages/CounterPage";
 
 function App() {
   const location = useLocation();
@@ -20,6 +21,7 @@ function App() {
         <Route path="/" Component={HomePage} />
         <Route path="/cart" Component={CardPage} />
         <Route path="/login" Component={LoginPage} />
+        <Route path="/counter" Component={CounterPage} />
         <Route path="/product/:productId" Component={ProductDetailPage} />
 
         <Route path="/admin">
