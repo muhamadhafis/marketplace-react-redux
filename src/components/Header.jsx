@@ -1,11 +1,13 @@
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { IoCart, IoHeart } from "react-icons/io5";
-import { Icon } from "lucide-react";
-import { Separator } from "@radix-ui/react-separator";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export const Header = () => {
+  const userSelector = useSelector((state) => state.user);
+  const counterSelector = useSelector((state) => state.counter);
+
   return (
     <header className="min-h-16 border-b flex items-center justify-between px-6">
       {/* BRAND */}
@@ -34,6 +36,8 @@ export const Header = () => {
           <Button>Log In</Button>
           <Button variant={"outline"}>Sign Out</Button>
         </div>
+        <p>Hello {userSelector.email}</p>
+        <p>Counter: {counterSelector.count}</p>
       </div>
     </header>
   );

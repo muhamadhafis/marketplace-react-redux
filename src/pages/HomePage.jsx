@@ -4,10 +4,14 @@ import { CardProduct } from "../components/CardProduct";
 import { axiosInstance } from "@/lib/axios";
 import { useEffect, useState } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useSelector } from "react-redux";
 
 function HomePage() {
   const [productIsLoading, setProductIsLoading] = useState(false);
   const [products, setProducts] = useState([]);
+
+  const userSelector = useSelector((state) => state.user);
+  const counterSelector = useSelector((state) => state.counter);
 
   const productsList = products.map((product) => {
     return (
@@ -43,7 +47,8 @@ function HomePage() {
       <main className="min-h-[80vh] max-w-screen-md mx-auto px-4 mt-12">
         <div className="flex items-center text-center justify-center flex-col max-w-3xl">
           <h1 className="text-5xl font-bold text-gray-900 tracking-tighter">
-            Become a trend-setter with us.
+            Become a trend-setter with us. {userSelector.email} or Counter :{" "}
+            {counterSelector.count}
           </h1>
           <p className=" mt-4 text-m4 text-muted-foreground">
             Sandi proves you the best products in the market at the best price
