@@ -22,6 +22,7 @@ import {
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { axiosInstance } from "@/lib/axios";
+import { useDispatch } from "react-redux";
 
 const loginFormSchema = z.object({
   username: z
@@ -32,6 +33,8 @@ const loginFormSchema = z.object({
 });
 
 const LoginPage = () => {
+  const dispatch = useDispatch();
+
   const form = useForm({
     defaultValues: {
       username: "",
@@ -58,6 +61,16 @@ const LoginPage = () => {
       }
 
       alert(`Welcome back ${userResponse.data[0].username}!`);
+
+      dispatch({
+        type: "USER_LOGIN",
+        payload: {
+          username: userResponse.data[0].username,
+          password: userResponse.data[0].id,
+        },
+      });
+
+      form.reset();
     } catch (err) {
       console.log(err);
     }

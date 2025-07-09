@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 
 export const Header = () => {
   const userSelector = useSelector((state) => state.user);
-  const counterSelector = useSelector((state) => state.counter);
 
   return (
     <header className="min-h-16 border-b flex items-center justify-between px-6">
@@ -32,12 +31,16 @@ export const Header = () => {
             <IoHeart className="w-6 h-6" />
           </Button>
         </div>
-        <div className="flex gap-2">
-          <Button>Log In</Button>
-          <Button variant={"outline"}>Sign Out</Button>
+        <div className="flex gap-2 items-center">
+          {userSelector.id === "" ? (
+            <>
+              <Button>Log In</Button>
+              <Button variant={"outline"}>Sign Out</Button>
+            </>
+          ) : (
+            <p>Hello {userSelector.username}</p>
+          )}
         </div>
-        <p>Hello {userSelector.email}</p>
-        <p>Counter: {counterSelector.count}</p>
       </div>
     </header>
   );
