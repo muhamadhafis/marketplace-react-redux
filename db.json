@@ -126,5 +126,17 @@
       "stock": 1,
       "imageUrl": "https://erigostore.co.id/cdn/shop/files/New-Oniel-Front.jpg?v=1749525060&width=1100"
     }
+  ],
+  "users": [
+    {
+      "id": "5cf4",
+      "username": "sandi",
+      "password": "password"
+    },
+    {
+      "id": "8e82",
+      "username": "sandi123",
+      "password": "password"
+    }
   ]
 }

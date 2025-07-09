@@ -18,10 +18,9 @@ export const counterReducer = (state = DEFAULT_STATE, action) => {
   } else if (action.type === "INPUT_COUNT") {
     const dubState = { ...state };
 
-    dubState.count = action.payload.newCount;
+    dubState.count = Number(action.payload.newCount);
 
     return dubState;
   }
-
   return state;
 };
