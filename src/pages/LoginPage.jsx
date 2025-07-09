@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { axiosInstance } from "@/lib/axios";
 
 const loginFormSchema = z.object({
   username: z
@@ -39,9 +40,27 @@ const LoginPage = () => {
     resolver: zodResolver(loginFormSchema),
     reValidateMode: "onSubmit",
   });
+
   const [isChecked, setIsChecked] = useState(false);
-  const handleLogin = (values) => {
-    alert(values.username + values.password);
+
+  const handleLogin = async (values) => {
+    try {
+      const userResponse = await axiosInstance.get("/users", {
+        params: {
+          username: values.username,
+          password: values.password,
+        },
+      });
+
+      if (!userResponse.data.length) {
+        alert("Invalid username or password");
+        return;
+      }
+
+      alert(`Welcome back ${userResponse.data[0].username}!`);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
