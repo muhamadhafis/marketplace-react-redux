@@ -11,10 +11,43 @@ import CreateProductPage from "./pages/admin/CreateProductPage";
 import EditProductPage from "./pages/admin/EditProductPage";
 import CounterPage from "./pages/CounterPage";
 import RegisterPage from "./pages/RegisterPage";
+import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import { axiosInstance } from "./lib/axios";
 
 function App() {
   const location = useLocation();
-  console.log(location.pathname);
+  const dispatch = useDispatch();
+
+  const [isHydrated, setIsHydrated] = useState(false);
+
+  const hydrateAuth = async () => {
+    try {
+      const currentUser = localStorage.getItem("current-user");
+      if (!currentUser) return;
+
+      const userResponse = await axiosInstance.get("/users/" + currentUser);
+
+      dispatch({
+        type: "USER_LOGIN",
+        payload: {
+          username: userResponse.data.username,
+          id: userResponse.data.id,
+        },
+      });
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setIsHydrated(true);
+    }
+  };
+
+  useEffect(() => {
+    hydrateAuth();
+  }, []);
+
+  if (!isHydrated) return <div>Loading...</div>;
+
   return (
     <>
       {!location.pathname.startsWith("/admin") ? <Header /> : null}

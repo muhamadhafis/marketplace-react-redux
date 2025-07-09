@@ -70,6 +70,8 @@ const LoginPage = () => {
         },
       });
 
+      localStorage.setItem("current-user", userResponse.data[0].id);
+
       form.reset();
     } catch (err) {
       console.log(err);
