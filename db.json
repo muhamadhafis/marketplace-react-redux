@@ -131,12 +131,14 @@
     {
       "id": "5cf4",
       "username": "sandi",
-      "password": "password"
+      "password": "password",
+      "role": "user"
     },
     {
-      "id": "8e82",
-      "username": "sandi123",
-      "password": "password"
+      "id": "1f97",
+      "username": "admin",
+      "password": "password",
+      "role": "admin"
     }
   ]
 }

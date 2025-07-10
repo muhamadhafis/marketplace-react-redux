@@ -70,6 +70,7 @@ const RegisterPage = () => {
       await axiosInstance.post("/users", {
         username: values.username,
         password: values.password,
+        role: "user",
       });
 
       alert("User created successfully");

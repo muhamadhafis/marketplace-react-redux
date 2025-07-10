@@ -54,7 +54,9 @@ export const Header = () => {
             </>
           ) : (
             <>
-              <p>Hello {userSelector.username}</p>
+              <p>
+                Hello {userSelector.username} ({userSelector.role})
+              </p>
               <Button onClick={handleLogout} variant={"outline"}>
                 <LogOut />
                 Log out

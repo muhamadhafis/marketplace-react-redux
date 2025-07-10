@@ -1,6 +1,7 @@
 const DEFAULT_STATE = {
   username: "",
   id: "",
+  role: "",
 };
 
 export const userReducer = (state = DEFAULT_STATE, action) => {
@@ -9,6 +10,7 @@ export const userReducer = (state = DEFAULT_STATE, action) => {
 
     dubState.username = action.payload.username;
     dubState.id = action.payload.id;
+    dubState.role = action.payload.role;
 
     return dubState;
   } else if (action.type === "USER_LOGOUT") {

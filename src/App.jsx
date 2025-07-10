@@ -33,6 +33,7 @@ function App() {
         payload: {
           username: userResponse.data.username,
           id: userResponse.data.id,
+          role: userResponse.data.role,
         },
       });
     } catch (err) {
