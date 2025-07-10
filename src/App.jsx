@@ -10,42 +10,13 @@ import CreateProductPage from "./pages/admin/CreateProductPage";
 import EditProductPage from "./pages/admin/EditProductPage";
 import CounterPage from "./pages/CounterPage";
 import RegisterPage from "./pages/RegisterPage";
-import { useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
-import { axiosInstance } from "./lib/axios";
 import CartPage from "./pages/CartPage";
+import { useHydration } from "./hooks/useHydration";
 
 function App() {
   const location = useLocation();
-  const dispatch = useDispatch();
 
-  const [isHydrated, setIsHydrated] = useState(false);
-
-  const hydrateAuth = async () => {
-    try {
-      const currentUser = localStorage.getItem("current-user");
-      if (!currentUser) return;
-
-      const userResponse = await axiosInstance.get("/users/" + currentUser);
-
-      dispatch({
-        type: "USER_LOGIN",
-        payload: {
-          username: userResponse.data.username,
-          id: userResponse.data.id,
-          role: userResponse.data.role,
-        },
-      });
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setIsHydrated(true);
-    }
-  };
-
-  useEffect(() => {
-    hydrateAuth();
-  }, []);
+  const { isHydrated } = useHydration();
 
   if (!isHydrated) return <div>Loading...</div>;
 
