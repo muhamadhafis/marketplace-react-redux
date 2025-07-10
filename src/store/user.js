@@ -11,6 +11,8 @@ export const userReducer = (state = DEFAULT_STATE, action) => {
     dubState.id = action.payload.id;
 
     return dubState;
+  } else if (action.type === "USER_LOGOUT") {
+    return DEFAULT_STATE;
   }
   return state;
 };
