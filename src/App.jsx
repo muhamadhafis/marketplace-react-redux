@@ -2,7 +2,6 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import HomePage from "./pages/HomePage";
-import CardPage from "./pages/CardPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import LoginPage from "./pages/LoginPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
@@ -14,6 +13,7 @@ import RegisterPage from "./pages/RegisterPage";
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { axiosInstance } from "./lib/axios";
+import CartPage from "./pages/CartPage";
 
 function App() {
   const location = useLocation();
@@ -53,7 +53,7 @@ function App() {
       {!location.pathname.startsWith("/admin") ? <Header /> : null}
       <Routes>
         <Route path="/" Component={HomePage} />
-        <Route path="/cart" Component={CardPage} />
+        <Route path="/cart" Component={CartPage} />
         <Route path="/login" Component={LoginPage} />
         <Route path="/register" Component={RegisterPage} />
         <Route path="/counter" Component={CounterPage} />
