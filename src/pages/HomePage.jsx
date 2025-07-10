@@ -47,8 +47,7 @@ function HomePage() {
       <main className="min-h-[80vh] max-w-screen-md mx-auto px-4 mt-12">
         <div className="flex items-center text-center justify-center flex-col max-w-3xl">
           <h1 className="text-5xl font-bold text-gray-900 tracking-tighter">
-            Become a trend-setter with us. {userSelector.email} or Counter :{" "}
-            {counterSelector.count}
+            Become a trend-setter with us.
           </h1>
           <p className=" mt-4 text-m4 text-muted-foreground">
             Sandi proves you the best products in the market at the best price
