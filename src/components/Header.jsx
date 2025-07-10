@@ -22,7 +22,7 @@ export const Header = () => {
     <header className="min-h-16 border-b flex items-center justify-between px-6">
       {/* BRAND */}
       <Link to={"/"}>
-        <p className="text-2xl font-bold hover:cursor-pointer font-mono tracking-tighter">
+        <p className="mr-4 text-2xl font-bold hover:cursor-pointer font-mono tracking-tighter">
           Oktav00
         </p>
       </Link>
@@ -45,8 +45,12 @@ export const Header = () => {
         <div className="flex gap-4 items-center">
           {userSelector.id === "" ? (
             <>
-              <Button>Log In</Button>
-              <Button variant={"outline"}>Sign In</Button>
+              <Link to={"/login"}>
+                <Button>Log In</Button>
+              </Link>
+              <Link to={"/register"}>
+                <Button variant={"outline"}>Sign Up</Button>
+              </Link>
             </>
           ) : (
             <>

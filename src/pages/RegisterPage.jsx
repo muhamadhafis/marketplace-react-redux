@@ -19,6 +19,8 @@ import {
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { axiosInstance } from "@/lib/axios";
+import { GuestPage } from "@/components/guard/GuestPage";
+import { useNavigate } from "react-router-dom";
 
 const registerFormSchema = z
   .object({
@@ -40,6 +42,8 @@ const registerFormSchema = z
   });
 
 const RegisterPage = () => {
+  const navigate = useNavigate();
+
   const form = useForm({
     defaultValues: {
       username: "",
@@ -71,75 +75,79 @@ const RegisterPage = () => {
       alert("User created successfully");
 
       form.reset();
+
+      navigate("/login");
     } catch (err) {
       console.log(err);
     }
   };
 
   return (
-    <main className="flex justify-center items-center flex-col gap-2 h-[80vh]">
-      <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(handleRegister)}
-          className={"w-full max-w-lg"}
-        >
-          <Card>
-            <CardHeader>
-              <CardTitle className={"text-2xl font-bold tracking-tighter"}>
-                Create an account!
-              </CardTitle>
-            </CardHeader>
-            <CardContent className={"flex flex-col gap-4"}>
-              <FormField
-                control={form.control}
-                name="username"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Username</FormLabel>
-                    <FormControl>
-                      <Input {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="password"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Password</FormLabel>
-                    <FormControl>
-                      <Input {...field} type={"password"} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="repeatPassword"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Repeat password</FormLabel>
-                    <FormControl>
-                      <Input {...field} type={"password"} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </CardContent>
-            <CardFooter>
-              <div className="flex flex-col w-full gap-4">
-                <Button type="submit">Register</Button>
-                <Button variant="link">Log in as guest</Button>
-              </div>
-            </CardFooter>
-          </Card>
-        </form>
-      </Form>
-    </main>
+    <GuestPage>
+      <main className="flex justify-center items-center flex-col gap-2 h-[80vh]">
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(handleRegister)}
+            className={"w-full max-w-lg"}
+          >
+            <Card>
+              <CardHeader>
+                <CardTitle className={"text-2xl font-bold tracking-tighter"}>
+                  Create an account!
+                </CardTitle>
+              </CardHeader>
+              <CardContent className={"flex flex-col gap-4"}>
+                <FormField
+                  control={form.control}
+                  name="username"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Username</FormLabel>
+                      <FormControl>
+                        <Input {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="password"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Password</FormLabel>
+                      <FormControl>
+                        <Input {...field} type={"password"} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="repeatPassword"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Repeat password</FormLabel>
+                      <FormControl>
+                        <Input {...field} type={"password"} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </CardContent>
+              <CardFooter>
+                <div className="flex flex-col w-full gap-4">
+                  <Button type="submit">Register</Button>
+                  <Button variant="link">Log in as guest</Button>
+                </div>
+              </CardFooter>
+            </Card>
+          </form>
+        </Form>
+      </main>
+    </GuestPage>
   );
 };
 
