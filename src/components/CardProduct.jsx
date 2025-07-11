@@ -19,12 +19,36 @@ export const CardProduct = (props) => {
     }
 
     try {
-      await axiosInstance.post("/carts", {
-        userId: userSelector.id,
-        productId: id,
-        quantity,
+      const cartResponse = await axiosInstance.get("/carts", {
+        params: {
+          userId: userSelector.id,
+          _embed: "product",
+        },
       });
 
+      const existingProduct = cartResponse.data.find((cart) => {
+        return cart.productId === id;
+      });
+
+      if (!existingProduct) {
+        await axiosInstance.post("/carts", {
+          userId: userSelector.id,
+          productId: id,
+          quantity,
+        });
+      } else {
+        if (
+          existingProduct.quantity + quantity >
+          existingProduct.product.stock
+        ) {
+          alert("Stock not enough");
+          return;
+        }
+
+        await axiosInstance.patch("/carts/" + existingProduct.id, {
+          quantity: existingProduct.quantity + quantity,
+        });
+      }
       alert("Product added to cart");
     } catch (err) {
       console.log(err);

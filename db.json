@@ -147,6 +147,12 @@
       "userId": "5cf4",
       "productId": "1",
       "quantity": 3
+    },
+    {
+      "id": "75bb",
+      "userId": "5cf4",
+      "productId": "1",
+      "quantity": 1
     }
   ]
 }
