@@ -1,6 +1,6 @@
 import { IoIosAdd, IoIosRemove } from "react-icons/io";
 import { Button } from "./ui/button";
-import { IoCheckmark } from "react-icons/io5";
+import { IoCheckmark, IoClose, IoTrash } from "react-icons/io5";
 
 export const CartItem = (props) => {
   return (
@@ -19,7 +19,7 @@ export const CartItem = (props) => {
           <Button variant={"ghost"} size={"icon"}>
             <IoIosRemove className="w-4 h-4" />
           </Button>
-          <p className="font-bold text-lg"></p>
+          <p className="font-bold text-lg">{props.quantity}</p>
           <Button variant={"ghost"} size={"icon"}>
             <IoIosAdd className="w-4 h-4" />
           </Button>
@@ -27,13 +27,24 @@ export const CartItem = (props) => {
 
         <div className="flex w-full justify-between">
           <div className="flex gap-2 items-center">
-            <IoCheckmark className="text-green-500 w-4 h-4" />
-            <span className="text-sm text-muted-foreground">Available</span>
+            {props.stock < props.quantity ? (
+              <>
+                <IoClose className="text-red-500 w-4 h-4" />
+                <span className="text-sm text-muted-foreground">
+                  Not Available
+                </span>
+              </>
+            ) : (
+              <>
+                <IoCheckmark className="text-green-500 w-4 h-4" />
+                <span className="text-sm text-muted-foreground">Available</span>
+              </>
+            )}
+            <Button className="text-destructive" variant={"link"}>
+              <IoTrash />
+              Remove Item
+            </Button>
           </div>
-
-          <Button className="text-destructive" variant={"link"}>
-            Remove Item
-          </Button>
         </div>
       </div>
     </div>

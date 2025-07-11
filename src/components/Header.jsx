@@ -4,9 +4,12 @@ import { IoCart, IoHeart } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { LogOut } from "lucide-react";
+import { useEffect } from "react";
+import { axiosInstance } from "@/lib/axios";
 
 export const Header = () => {
   const userSelector = useSelector((state) => state.user);
+  const cartSelector = useSelector((state) => state.cart);
 
   const dispatch = useDispatch();
 
@@ -18,17 +21,39 @@ export const Header = () => {
     });
   };
 
+  const fetchCart = async () => {
+    try {
+      const cartResponse = await axiosInstance.get("/carts", {
+        params: {
+          userId: userSelector.id,
+          _embed: "product",
+        },
+      });
+
+      dispatch({
+        type: "CART_GET",
+        payload: cartResponse.data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    fetchCart();
+  }, []);
+
   return (
     <header className="min-h-16 border-b flex items-center justify-between px-6">
       {/* BRAND */}
       <Link to={"/"}>
-        <p className="mr-4 text-2xl font-bold hover:cursor-pointer font-mono tracking-tighter">
+        <p className="text-2xl font-bold hover:cursor-pointer font-mono tracking-tighter">
           Oktav00
         </p>
       </Link>
 
       {/* SEARCH BAR */}
-      <Input className={"max-w-[600px]"} placeholder="Search product.." />
+      <Input className={"max-w-[600px] mx-4"} placeholder="Search product.." />
 
       {/* BUTTONS*/}
       <div className="flex gap-4 h-5 items-center">
@@ -36,6 +61,9 @@ export const Header = () => {
           <Link to={"/cart"}>
             <Button size={"icon"} variant={"ghost"}>
               <IoCart className="w-6 h-6" />
+              <span className="text-lg font-bold">
+                {cartSelector.items.length}
+              </span>
             </Button>
           </Link>
           <Button size={"icon"} variant={"ghost"}>

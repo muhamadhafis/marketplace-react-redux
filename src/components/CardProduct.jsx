@@ -2,7 +2,7 @@ import { Button } from "./ui/button";
 import { IoIosAdd, IoIosRemove } from "react-icons/io";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { axiosInstance } from "@/lib/axios";
 
 export const CardProduct = (props) => {
@@ -11,6 +11,26 @@ export const CardProduct = (props) => {
   const [quantity, setQuantity] = useState(0);
 
   const userSelector = useSelector((state) => state.user);
+
+  const dispatch = useDispatch();
+
+  const fetchCart = async () => {
+    try {
+      const cartResponse = await axiosInstance.get("/carts", {
+        params: {
+          userId: userSelector.id,
+          _embed: "product",
+        },
+      });
+
+      dispatch({
+        type: "CART_GET",
+        payload: cartResponse.data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const addToCart = async () => {
     if (!userSelector.id) {
@@ -50,6 +70,7 @@ export const CardProduct = (props) => {
         });
       }
       alert("Product added to cart");
+      fetchCart();
     } catch (err) {
       console.log(err);
     }

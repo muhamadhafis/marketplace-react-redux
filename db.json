@@ -4,7 +4,7 @@
       "id": "1",
       "productName": "Kaos FINALDANCE Coklat Spesial",
       "price": 100000,
-      "stock": 3,
+      "stock": 1,
       "imageUrl": "https://erigostore.co.id/cdn/shop/files/New-Gita-Front-1.jpg?v=1749524871&width=1100"
     },
     {
@@ -143,16 +143,22 @@
   ],
   "carts": [
     {
-      "id": "1442",
+      "id": "5387",
       "userId": "5cf4",
       "productId": "1",
       "quantity": 3
     },
     {
-      "id": "75bb",
+      "id": "5bca",
       "userId": "5cf4",
-      "productId": "1",
-      "quantity": 1
+      "productId": "4",
+      "quantity": 2
+    },
+    {
+      "id": "550c",
+      "userId": "5cf4",
+      "productId": "7",
+      "quantity": 2
     }
   ]
 }
