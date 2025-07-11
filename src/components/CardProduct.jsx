@@ -2,14 +2,33 @@ import { Button } from "./ui/button";
 import { IoIosAdd, IoIosRemove } from "react-icons/io";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { axiosInstance } from "@/lib/axios";
 
 export const CardProduct = (props) => {
   const { imageUrl, productName, price, stock, id } = props;
 
   const [quantity, setQuantity] = useState(0);
 
-  const addToCart = () => {
-    alert("added");
+  const userSelector = useSelector((state) => state.user);
+
+  const addToCart = async () => {
+    if (!userSelector.id) {
+      alert("Please login first");
+      return;
+    }
+
+    try {
+      await axiosInstance.post("/carts", {
+        userId: userSelector.id,
+        productId: id,
+        quantity,
+      });
+
+      alert("Product added to cart");
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const incrementQuantity = () => {
@@ -67,7 +86,7 @@ export const CardProduct = (props) => {
 
         {/* Button add to cart */}
         <Button
-          disabled={stock <= 0}
+          disabled={!Boolean(stock) || quantity <= 0}
           onClick={() => addToCart()}
           className={"w-full mt-2"}
         >

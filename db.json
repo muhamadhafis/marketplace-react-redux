@@ -140,5 +140,13 @@
       "password": "password",
       "role": "admin"
     }
+  ],
+  "carts": [
+    {
+      "id": "1442",
+      "userId": "5cf4",
+      "productId": "1",
+      "quantity": 3
+    }
   ]
 }
