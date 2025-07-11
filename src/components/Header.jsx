@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { LogOut } from "lucide-react";
 import { useEffect } from "react";
 import { axiosInstance } from "@/lib/axios";
+import { fetchCart } from "@/services/cardService";
 
 export const Header = () => {
   const userSelector = useSelector((state) => state.user);
@@ -21,26 +22,8 @@ export const Header = () => {
     });
   };
 
-  const fetchCart = async () => {
-    try {
-      const cartResponse = await axiosInstance.get("/carts", {
-        params: {
-          userId: userSelector.id,
-          _embed: "product",
-        },
-      });
-
-      dispatch({
-        type: "CART_GET",
-        payload: cartResponse.data,
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   useEffect(() => {
-    fetchCart();
+    fetchCart(userSelector.id);
   }, []);
 
   return (

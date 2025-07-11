@@ -143,19 +143,7 @@
   ],
   "carts": [
     {
-      "id": "5387",
-      "userId": "5cf4",
-      "productId": "1",
-      "quantity": 3
-    },
-    {
-      "id": "5bca",
-      "userId": "5cf4",
-      "productId": "4",
-      "quantity": 2
-    },
-    {
-      "id": "550c",
+      "id": "afde",
       "userId": "5cf4",
       "productId": "7",
       "quantity": 2

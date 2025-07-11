@@ -14,24 +14,6 @@ export const CardProduct = (props) => {
 
   const dispatch = useDispatch();
 
-  const fetchCart = async () => {
-    try {
-      const cartResponse = await axiosInstance.get("/carts", {
-        params: {
-          userId: userSelector.id,
-          _embed: "product",
-        },
-      });
-
-      dispatch({
-        type: "CART_GET",
-        payload: cartResponse.data,
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   const addToCart = async () => {
     if (!userSelector.id) {
       alert("Please login first");
@@ -70,7 +52,7 @@ export const CardProduct = (props) => {
         });
       }
       alert("Product added to cart");
-      fetchCart();
+      fetchCart(userSelector.id);
     } catch (err) {
       console.log(err);
     }

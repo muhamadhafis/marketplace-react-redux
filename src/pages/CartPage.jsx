@@ -21,6 +21,7 @@ function CartPage() {
                     imageUrl={cartItem.product.imageUrl}
                     stock={cartItem.product.stock}
                     quantity={cartItem.quantity}
+                    cartId={cartItem.id}
                   />
                 );
               })}
