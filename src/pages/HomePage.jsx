@@ -10,9 +10,6 @@ function HomePage() {
   const [productIsLoading, setProductIsLoading] = useState(false);
   const [products, setProducts] = useState([]);
 
-  const userSelector = useSelector((state) => state.user);
-  const counterSelector = useSelector((state) => state.counter);
-
   const productsList = products.map((product) => {
     return (
       <CardProduct

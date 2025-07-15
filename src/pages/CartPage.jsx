@@ -8,10 +8,50 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { axiosInstance } from "@/lib/axios";
+import { fetchCart } from "@/services/cardService";
 import { useSelector } from "react-redux";
 
 function CartPage() {
   const cartSelector = useSelector((state) => state.cart);
+  const userSelector = useSelector((state) => state.user);
+
+  const handleCheckout = async () => {
+    for (let i = 0; i < cartSelector.items.length; i++) {
+      const cartCurrentItem = cartSelector.items[i];
+
+      if (cartCurrentItem.quantity > cartCurrentItem.product.stock) {
+        alert("Stock not enough");
+        return;
+      }
+    }
+
+    const totalPrice = cartSelector.items.reduce((a, b) => {
+      return a + b.quantity * b.product.price;
+    }, 0);
+    const tax = totalPrice / 10;
+
+    await axiosInstance.post("/transactions", {
+      userId: userSelector.id,
+      totalPrice,
+      tax,
+      transactionDate: new Date(),
+      items: cartSelector.items,
+    });
+    alert("Transaction successfull");
+
+    cartSelector.items.forEach(async (cartItem) => {
+      await axiosInstance.patch("/products/" + cartItem.productId, {
+        stock: cartItem.product.stock - cartItem.quantity,
+      });
+    });
+
+    cartSelector.items.forEach(async (cartItem) => {
+      await axiosInstance.delete("/carts/" + cartItem.id);
+    });
+
+    fetchCart(userSelector.id);
+  };
 
   return (
     <SignedInPage>
@@ -24,6 +64,7 @@ function CartPage() {
               {cartSelector.items.map((cartItem) => {
                 return (
                   <CartItem
+                    keu={cartItem.id}
                     productName={cartItem.product.productName}
                     price={cartItem.product.price}
                     imageUrl={cartItem.product.imageUrl}
@@ -88,7 +129,9 @@ function CartPage() {
                   </span>
                 </div>
 
-                <Button className="w-full">Checkout</Button>
+                <Button onClick={handleCheckout} className="w-full">
+                  Checkout
+                </Button>
               </CardFooter>
             </Card>
           </div>

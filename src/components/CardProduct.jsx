@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { axiosInstance } from "@/lib/axios";
+import { fetchCart } from "@/services/cardService";
 
 export const CardProduct = (props) => {
   const { imageUrl, productName, price, stock, id } = props;
@@ -11,8 +12,6 @@ export const CardProduct = (props) => {
   const [quantity, setQuantity] = useState(0);
 
   const userSelector = useSelector((state) => state.user);
-
-  const dispatch = useDispatch();
 
   const addToCart = async () => {
     if (!userSelector.id) {
